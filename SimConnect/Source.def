@@ -1,0 +1,4 @@
+LIBRARY SimCMain.dll
+EXPORTS
+ DLLStart
+ DLLStop
