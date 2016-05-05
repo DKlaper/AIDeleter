@@ -23,8 +23,10 @@ It has three parameters:
 
 ## Installation
 
+The DLL is available at avsim.com
+
 Place the dll in a convenient spot for you, e.g. in a new subfolder of your FSX installation
-and add the following to your dll.xml file in <Home Drive>:\Users\<Username>\AppData\Roaming\Microsoft\FSX folder
+and add the following to your dll.xml file in the C:\Users\<Username>\AppData\Roaming\Microsoft\FSX folder
 
 <Launch.Addon>
     <Name>AIDEL</Name>
@@ -32,14 +34,17 @@ and add the following to your dll.xml file in <Home Drive>:\Users\<Username>\App
     <Path>Path/to/dll/SimCMain.dll</Path>
 </Launch.Addon>
 
-When loading FSX afterwards for the first time you need to allow running this DLL by clicking on RUN.
+When loading FSX afterwards for the first time you need to allow running this DLL by clicking on RUN!
 
+
+
+The source code is available at https://github.com/DKlaper/AIDeleter
 If you want to build the project you need to have the FSX SDK installed and adapt the paths in the include directories and linker to point to your SimConnect installation.
 
 ## Settings and Statistics
 
 When the DLL is loaded correctly you can load a flight.
-Then in the top bar menu under Add-Ons you will find AI-Deleter Settings.
+Then in the top bar menu under 'Add-Ons' you will find 'AI Deleter Settings'.
 Clicking on it will display the settings screen which also shows some statistics in the top bar.
 With the buttons you can change the settings, which will be saved immediately for future use.
 There are hard coded limits for each parameter.

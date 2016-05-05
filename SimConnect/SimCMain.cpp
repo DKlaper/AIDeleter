@@ -75,7 +75,7 @@ void getMenu(char* displayStatsMenu, int size)
 		return;
 	}
 
-	sprintf_s(displayStatsMenu, size, "AC deleted: %6d Requests made: %6d Last deleted: %6lld seconds ago\0", stats.nrOfDeletions, stats.nrOfRequests, (GetTickCount64() - stats.lastDeleted) / 1000);
+	sprintf_s(displayStatsMenu, size, "AC deleted: %6d Requests made: %6d Last deleted: %6lld seconds ago\0", stats.nrOfDeletions, stats.nrOfRequests, stats.lastDeleted == 0 ? 0 : (GetTickCount64() - stats.lastDeleted) / 1000);
 	strcpy_s(displayStatsMenu + 74, size-74, "AI Deleter Settings\0");
 	sprintf_s(displayStatsMenu + 94, size - 94, "Slow down check rate by 30 seconds (currently every %5d seconds)\0", conf.requestEveryXSec);
 	strcpy_s(displayStatsMenu + 161, size - 161, "Speed up check rate by 30 seconds\0");
@@ -99,7 +99,9 @@ void CALLBACK dispatchEvents(SIMCONNECT_RECV*  pData, DWORD  cbData, void *  pCo
 		switch (evt->uEventID)
 		{
 		case STARTUP:
-
+			stats.lastDeleted = 0;
+			stats.nrOfDeletions = 0;
+			stats.nrOfRequests = 0;
 			// Now the sim is running, request information on the user aircraft
 			hr = SimConnect_RequestDataOnSimObjectType(hSimConnect, R1, AIPARKDATA, conf.radius, SIMCONNECT_SIMOBJECT_TYPE_AIRCRAFT);
 			++stats.nrOfRequests;
